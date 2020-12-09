@@ -144,5 +144,5 @@ def file_to_list(file_path):
             arr.append(line.strip('\n'))
     return arr
 
-print(accuracy_score(file_to_list("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/dev_6_actual_labels.txt"),
-file_to_list("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/dev_6_expected_labels.txt")))
+# print(accuracy_score(file_to_list("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/dev_6_actual_labels.txt"),
+# file_to_list("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/dev_6_expected_labels.txt")))
