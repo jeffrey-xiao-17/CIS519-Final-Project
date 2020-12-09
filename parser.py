@@ -25,5 +25,5 @@ def create_clm_file(file_path, tokens):
     f.close()
 
 entities, nonentities = load_and_parse_tokens("./6_gold_labels/train_6_gold_labels.txt")
-create_clm_file("./6_gold_labels/train_6_gold_labels_entities.txt", entities)
-create_clm_file("./6_gold_labels/train_6_gold_labels_nonentities.txt", nonentities)
+create_clm_file("./CLM/train_6_gold_labels_entities.txt", entities)
+create_clm_file("./CLM/train_6_gold_labels_nonentities.txt", nonentities)
