@@ -77,13 +77,13 @@ def create_CLM_and_parse_files():
     """
     Function to create all parsed .txt files (entities, nonentities, and tokens)
     """
-    entities, nonentities = load_and_parse_tokens("./6_gold_labels/train_6_gold_labels.txt")
-    create_clm_file("./parsed_character_files/train_6_gold_labels_entities.txt", entities)
-    create_clm_file("./parsed_character_files/train_6_gold_labels_nonentities.txt", nonentities)
-    create_clm_file("./parsed_character_files/train_6_gold_labels_tokens.txt", entities + nonentities)
+    entities, nonentities = load_and_parse_tokens("./18_gold_labels/train_18_gold_labels.txt")
+    create_clm_file("./parsed_character_files/train_18_gold_labels_entities.txt", entities)
+    create_clm_file("./parsed_character_files/train_18_gold_labels_nonentities.txt", nonentities)
+    # create_clm_file("./parsed_character_files/train_6_gold_labels_tokens.txt", entities + nonentities)
 
 
-def classify_all_tokens(entity_lm_file, nonentity_lm_file, tokens_file, out_file):
+def classify_all_tokens(entity_lm_file, nonentity_lm_file, tokens_file, out_file, sample_file):
     """
     Classifies all tokens based on training data
 
@@ -102,10 +102,10 @@ def classify_all_tokens(entity_lm_file, nonentity_lm_file, tokens_file, out_file
     wr.close()
     with open(tokens_file, 'r') as f:
         for line in f:
-            wf = open("sample.txt", "w")
+            wf = open(sample_file, "w")
             wf.write(line.strip('\n'))
             wf.close()
-            classify_one_token(entity_lm_file, nonentity_lm_file, "sample.txt", out_file)
+            classify_one_token(entity_lm_file, nonentity_lm_file, sample_file, out_file)
 
 def classify_one_token(entity_lm_file, nonentity_lm_file, txt_file, out_file):
     """
@@ -132,13 +132,14 @@ def classify_one_token(entity_lm_file, nonentity_lm_file, txt_file, out_file):
     f.write("1\n" if entity_ppl < nonentity_ppl else "0\n")
     f.close()
 
-tokens = load_and_parse_tokens_compiled("./12_gold_labels/dev_12_gold_labels.txt")
-create_clm_file("./parsed_character_files/dev_12_gold_labels_tokens.txt", tokens)
-get_labels("./12_gold_labels/dev_12_gold_labels.txt", "./NEI_labels/dev_12_expected_labels.txt")
-classify_all_tokens("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_6_gold_labels_entities.lm", 
-"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_6_gold_labels_nonentities.lm",
-"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/parsed_character_files/dev_12_gold_labels_tokens.txt",
-"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/dev_12_actual_labels.txt")
+# tokens = load_and_parse_tokens_compiled("./12_gold_labels/test_12_gold_labels.txt")
+# create_clm_file("./parsed_character_files/tokens/test_12_gold_labels_tokens.txt", tokens)
+# get_labels("./12_gold_labels/dev_6_gold_labels.txt", "./NEI_labels/train_12/dev_6_expected_labels.txt")
+classify_all_tokens("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_12_gold_labels_entities.lm", 
+"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_12_gold_labels_nonentities.lm",
+"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/parsed_character_files/tokens/dev_18_gold_labels_tokens.txt",
+"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_12/dev_18_actual_labels.txt",
+"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample3.txt")
 
 def file_to_list(file_path):
     arr = []
