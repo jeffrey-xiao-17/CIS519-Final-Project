@@ -155,9 +155,10 @@ def get_actual_labels(prefix, train_num, dev_test_num, sample_num):
 #     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_{n}/{p}_{dtn}_mini_actual.txt".format(n=train_num, p=prefix, dtn=dev_test_num),
 #     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample{sn}.txt".format(sn=sample_num))
 
-# get_actual_labels("dev", 18, 6, 1)
-# get_actual_labels("dev", 18, 12, 2)
-get_actual_labels("dev", 18, 18, 3)
+doc_type = "test"
+# get_actual_labels(doc_type, 18, 6, 1)
+# get_actual_labels(doc_type, 18, 12, 2)
+# get_actual_labels(doc_type, 18, 18, 3)
 
 def file_to_list(file_path):
     arr = []
