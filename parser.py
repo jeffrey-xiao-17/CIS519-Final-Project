@@ -135,11 +135,29 @@ def classify_one_token(entity_lm_file, nonentity_lm_file, txt_file, out_file):
 # tokens = load_and_parse_tokens_compiled("./12_gold_labels/test_12_gold_labels.txt")
 # create_clm_file("./parsed_character_files/tokens/test_12_gold_labels_tokens.txt", tokens)
 # get_labels("./12_gold_labels/dev_6_gold_labels.txt", "./NEI_labels/train_12/dev_6_expected_labels.txt")
-classify_all_tokens("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_12_gold_labels_entities.lm", 
-"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_12_gold_labels_nonentities.lm",
-"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/parsed_character_files/tokens/dev_18_gold_labels_tokens.txt",
-"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_12/dev_18_actual_labels.txt",
-"/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample3.txt")
+# classify_all_tokens("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_12_gold_labels_entities.lm", 
+# "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_12_gold_labels_nonentities.lm",
+# "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/parsed_character_files/tokens/test_18_gold_labels_tokens.txt",
+# "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_12/test_18_actual_labels.txt",
+# "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample3.txt")
+
+def get_actual_labels(prefix, train_num, dev_test_num, sample_num):
+    classify_all_tokens("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_{n}_gold_labels_entities.lm".format(n=train_num), 
+    "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_{n}_gold_labels_nonentities.lm".format(n=train_num),
+    "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/parsed_character_files/tokens/{p}_{dtn}_gold_labels_tokens.txt".format(p=prefix, dtn=dev_test_num),
+    "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_{n}/{p}_{dtn}_actual_labels.txt".format(n=train_num, p=prefix, dtn=dev_test_num),
+    "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample{sn}.txt".format(sn=sample_num))
+
+# def get_actual_labels(prefix, train_num, dev_test_num, sample_num):
+#     classify_all_tokens("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_{n}_gold_labels_entities.lm".format(n=train_num), 
+#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_{n}_gold_labels_nonentities.lm".format(n=train_num),
+#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/parsed_character_files/tokens/{p}_{dtn}_mini.txt".format(p=prefix, dtn=dev_test_num),
+#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_{n}/{p}_{dtn}_mini_actual.txt".format(n=train_num, p=prefix, dtn=dev_test_num),
+#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample{sn}.txt".format(sn=sample_num))
+
+# get_actual_labels("dev", 18, 6, 1)
+# get_actual_labels("dev", 18, 12, 2)
+get_actual_labels("dev", 18, 18, 3)
 
 def file_to_list(file_path):
     arr = []
@@ -148,5 +166,71 @@ def file_to_list(file_path):
             arr.append(line.strip('\n'))
     return arr
 
-# print(accuracy_score(file_to_list("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/dev_6_actual_labels.txt"),
-# file_to_list("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/dev_6_expected_labels.txt")))
+# '''
+#   Trained on train_6
+# '''
+# path = "/content/drive/MyDrive/project/NEI_labels/train_6/"
+# acc = accuracy_score(file_to_list(f"{path}dev_6_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_6_expected_labels.txt"))
+# print(f"dev_6 on train_6: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_6_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_6_expected_labels.txt"))
+# print(f"test_6 on train_6: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}dev_12_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_12_expected_labels.txt"))
+# print(f"dev_12 on train_6: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_12_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_12_expected_labels.txt"))
+# print(f"test_12 on train_6: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}dev_18_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_18_expected_labels.txt"))
+# print(f"dev_18 on train_6: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_18_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_18_expected_labels.txt"))
+# print(f"test_18 on train_6: {acc}")
+
+# '''
+#   Trained on train_12
+# '''
+# path = "/content/drive/MyDrive/project/NEI_labels/train_12/"
+# acc = accuracy_score(file_to_list(f"{path}dev_6_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_6_expected_labels.txt"))
+# print(f"dev_6 on train_12: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_6_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_6_expected_labels.txt"))
+# print(f"test_6 on train_12: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}dev_12_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_12_expected_labels.txt"))
+# print(f"dev_12 on train_12: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_12_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_12_expected_labels.txt"))
+# print(f"test_12 on train_12: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}dev_18_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_18_expected_labels.txt"))
+# print(f"dev_18 on train_12: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_18_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_18_expected_labels.txt"))
+# print(f"test_18 on train_12: {acc}")
+
+# '''
+#   Trained on train_18
+# '''
+# path = "/content/drive/MyDrive/project/NEI_labels/train_18/"
+# acc = accuracy_score(file_to_list(f"{path}dev_6_actual_labels.txt"),
+# file_to_list(f"{pexpected_pathath}/dev_6_expected_labels.txt"))
+# print(f"dev_6 on train_18: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_6_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_6_expected_labels.txt"))
+# print(f"test_6 on train_18: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}dev_12_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_12_expected_labels.txt"))
+# print(f"dev_12 on train_18: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_12_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_12_expected_labels.txt"))
+# print(f"test_12 on train_18: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}dev_18_actual_labels.txt"),
+# file_to_list(f"{expected_path}dev_18_expected_labels.txt"))
+# print(f"dev_18 on train_18: {acc}")
+# acc = accuracy_score(file_to_list(f"{path}test_18_actual_labels.txt"),
+# file_to_list(f"{expected_path}test_18_expected_labels.txt"))
+# print(f"test_18 on train_18: {acc}")
