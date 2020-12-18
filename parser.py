@@ -148,13 +148,10 @@ def get_actual_labels(prefix, train_num, dev_test_num, sample_num):
     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_{n}/{p}_{dtn}_actual_labels.txt".format(n=train_num, p=prefix, dtn=dev_test_num),
     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample{sn}.txt".format(sn=sample_num))
 
-# def get_actual_labels(prefix, train_num, dev_test_num, sample_num):
-#     classify_all_tokens("/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_{n}_gold_labels_entities.lm".format(n=train_num), 
-#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/CLM/train_{n}_gold_labels_nonentities.lm".format(n=train_num),
-#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/parsed_character_files/tokens/{p}_{dtn}_mini.txt".format(p=prefix, dtn=dev_test_num),
-#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/NEI_labels/train_{n}/{p}_{dtn}_mini_actual.txt".format(n=train_num, p=prefix, dtn=dev_test_num),
-#     "/Users/jeffreyxiao/Documents/GitHub/CIS519-Final-Project/sample{sn}.txt".format(sn=sample_num))
 
+'''
+RUN THIS SECTION TO GENERATE LABELS
+'''
 doc_type = "test"
 # get_actual_labels(doc_type, 18, 6, 1)
 # get_actual_labels(doc_type, 18, 12, 2)
