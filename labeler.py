@@ -4,7 +4,7 @@ import subprocess
 
 def load_and_parse_entity_labels(file_path):
     """
-    Loads and separates tokens into entities and nonentities
+    Loads all of the labels into an array
     """
     all_labels = []
     with open(file_path, 'r') as f:
@@ -40,7 +40,8 @@ label_mappings = {
 }
 def write_array_to_file(file_path, tokens):
     """
-    Creates and writes all tokens in input array to new file
+    writes an array to a file, with each element of the array
+    on a separate line
 
     Parameters
     ----------
