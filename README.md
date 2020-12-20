@@ -53,3 +53,9 @@ Overall, this identification process took a while due to having to parse and loa
 This file was used to filter out the keys from the pickle data. The original pickle data (which was taken from the Wikilinks database) mapped keys to complete sentences/phrases. This caused the file to be massive and wouldn't open on our local computers. To get around this, we chose to create a new file with all of the keys mapped to the number of occurrences in an effort to create a more readable file. This was successful, as seen in `filtered_pickles.json`. The output would then be used in the NER portion to choose entities for each of the 18 labels.
 
 ### `labler.py`
+
+This file was used to load all of the labels from the dataset and write just the labels to a file. We mapped each of the 18 labels to an integer, 1-18 (with 0 being non-entities). The labels were written such that they were all ints. The output of this file is in the `NER_labels` folder. 
+
+### `project_main.py`
+
+This file used the output of the files above to perform various computations. First, we computed the accuracy scores for NEI of the various datasets from the files created in the other files explained above. The majority of the NER task was also completed here. We created the RoBERTa model with the token classification head to created embeddings for each of the labels. 
